@@ -1,0 +1,18 @@
+from flask import Flask, request # start by importing flask, request for requesting data fom server
+
+app = Flask(__name__) #create am object of flask using the 'name' constructor
+
+# '/via_postman' is for creating the path for accessing your function
+@app.route('/via_postman') #this creates a path which you can use to access the function
+def hello_world(): #function we want to execute
+        return 'Hello World!'
+
+@app.route('/input') #this creates a path which you can use to access the function
+def take_input(): #function we want to execute
+    w = request.args.get('d')
+    return 'I searched for {}'.format(w)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+# Open postman to test the code using url: http://127.0.0.1:5000/via_postman or localhost:5000/via_postman
